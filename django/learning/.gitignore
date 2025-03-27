@@ -1,0 +1,23 @@
+learning/
+
+
+# Ignore Django database
+learnDjango/db.sqlite3
+learnDjango/db.sqlite3-journal
+
+# Ignore Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore environment files
+.env
+.venv
+
+# Ignore logs
+*.log
+
+
+
+
