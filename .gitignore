@@ -1,0 +1,30 @@
+# Ignore Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environment
+learning/
+
+# Ignore Django database
+learning/learnDjango/db.sqlite3
+learning/learnDjango/db.sqlite3-journal
+
+# Ignore environment files
+.env
+.venv
+
+# Ignore logs
+*.log
+
+# Ignore Django static and media files (if applicable)
+staticfiles/
+media/
+
+# Ignore OS and IDE-specific files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
