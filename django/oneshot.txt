@@ -61,4 +61,63 @@ my_project/          # Root project directory
 │── templates/       # Stores HTML template files
 │── static/          # Stores CSS, JavaScript, images, etc.
 
--  
+- MVC stands for Model–View–Controller, a software design pattern used to separate concerns in web applications.
+- MVT is Django’s design pattern, a variation of MVC tailored for web development.
+- Model handles the data: defines database structure, fields, and relationships.
+- View contains business logic: processes requests, queries models, and returns responses.
+- Template is the presentation layer: defines how data is displayed (HTML, CSS).
+- Unlike MVC, Django’s framework itself acts as the Controller (URL dispatcher).
+- Views in Django are Python functions/classes that link models and templates.
+- Templates use Django Template Language (DTL) to dynamically generate HTML.
+- Models are defined in models.py, and automatically linked to the database.
+- Views are in views.py, and they fetch data from models and render templates.
+- MVT ensures separation of concerns, making Django apps modular, maintainable, and scalable.
+
+
+- VIEWS
+
+- Views handle HTTP requests and return HTTP responses.
+- They contain the logic for what happens when a user visits a specific URL.
+- Views can be written as Function-Based Views (FBVs) or Class-Based Views (CBVs).
+- Function-Based Views (FBV)
+- Regular Python functions that take request as an argument.
+- Return HttpResponse, JsonResponse, HttpResponseRedirect, etc.
+- Common decorators:
+    @require_http_methods(["GET", "POST"])
+    @csrf_exempt
+    @login_required (from django.contrib.auth.decorators)
+- Class-Based Views (CBV)
+- Inherit from django.views.View or other mixins like TemplateView, DetailView, etc.
+- Organize logic into class methods like .get(), .post(), .put(), etc.
+- Must use .as_view() in urls.py to convert to a callable view.
+- Decorators like @method_decorator can be applied to CBVs.
+- Return Types
+- HttpResponse – returns plain text or HTML.
+- JsonResponse – returns JSON (for APIs).
+- HttpResponseRedirect – redirects to another URL.
+- HttpResponseNotFound, HttpResponseBadRequest, etc., for error responses.
+- render(request, template, context) – shortcut to return HTML with context.
+- Context in Views
+- Context is a dictionary passed from view to template.
+- It contains data to be dynamically rendered in HTML using template syntax.
+- Dynamic Views
+- Can take URL parameters via <int:id>, <str:name> etc.
+- These parameters are passed as arguments to the view.
+- Advanced CBVs
+- TemplateView, ListView, DetailView, CreateView, etc. handle common tasks.
+- Mixins can be used for reusable logic (e.g. LoginRequiredMixin).
+-  HTTP Method Handling
+    You can filter request methods using if request.method == "POST".
+    Or restrict methods using @require_http_methods.
+    CBVs define get(), post(), put(), delete() methods.
+- Error Views
+    Custom views can return 404, 403, or other error responses.
+    Django can also use custom error handlers: handler404, handler500, etc.
+- CSRF in Views
+    By default, Django requires CSRF tokens for POST methods.
+    Use @csrf_exempt to bypass during testing (not recommended in production).
+- Best Practices
+    Keep views thin – avoid too much logic in views.
+    Delegate database access to models and data formatting to templates.
+    Use CBVs when you need reusability and structure.
+    Use FBVs when logic is simple or highly customized.
